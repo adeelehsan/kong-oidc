@@ -2,7 +2,7 @@ package = "kong-oidc"
 version = "1.1.0-0"
 source = {
     url = "git://github.com/adeelehsan/kong-oidc",
-    branch = "allow-anonymous",
+    branch = "allow_anonymous_if_authorization_in_header",
     dir = "kong-oidc"
 }
 description = {

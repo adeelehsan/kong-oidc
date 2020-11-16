@@ -50,9 +50,12 @@ function handle(oidcConfig)
     end
 
     -- set anonymous headers if necessary --
-    if oidcConfig.anonymous ~= "" and oidcConfig.anonymous ~= nil then
-      utils.injectAnonymousUser(oidcConfig.anonymous)
-    end
+    local header = ngx.req.get_headers()['Authorization']
+    if header then
+      if oidcConfig.anonymous ~= "" and oidcConfig.anonymous ~= nil then
+        utils.injectAnonymousUser(oidcConfig.anonymous)
+      end
+    end  
   end
 end
 
