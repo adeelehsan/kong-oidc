@@ -51,10 +51,8 @@ function handle(oidcConfig)
 
     -- set anonymous headers if necessary --
     local redirect = ngx.req.get_headers()['oidc-redirect']
-    if redirect == nil or redirect == "" then
-      redirect = true
-    end
-    if not (redirect) then
+
+    if redirect == false then
       if oidcConfig.anonymous ~= "" and oidcConfig.anonymous ~= nil then
         utils.injectAnonymousUser(oidcConfig.anonymous)
       end
@@ -66,10 +64,8 @@ function make_oidc(oidcConfig)
   ngx.log(ngx.DEBUG, "OidcHandler calling authenticate, requested path: " .. ngx.var.request_uri)
   local unauth_action = nil
   local redirect = ngx.req.get_headers()['oidc-redirect']
-  if redirect == nil or redirect == "" then
-    redirect = true
-  end
-  if not (redirect) then
+
+  if redirect == false then
     if oidcConfig.anonymous ~= "" and oidcConfig.anonymous ~= nil then
       unauth_action = "pass"
     end
