@@ -4,7 +4,7 @@ local utils = require("kong.plugins.oidc.utils")
 local filter = require("kong.plugins.oidc.filter")
 local session = require("kong.plugins.oidc.session")
 
-OidcHandler.PRIORITY = 1000
+OidcHandler.PRIORITY = 1002
 
 
 function OidcHandler:new()
